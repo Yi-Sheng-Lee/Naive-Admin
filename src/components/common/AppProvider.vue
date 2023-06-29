@@ -1,16 +1,16 @@
 <template>
-	<n-config-provider wh-full :theme-overrides="naiveThemeOverrides">
-		<n-loading-bar-provider>
-			<n-dialog-provider>
-				<n-notification-provider>
-					<n-message-provider>
-						<slot></slot>
-						<NaiveProviderContent />
-					</n-message-provider>
-				</n-notification-provider>
-			</n-dialog-provider>
-		</n-loading-bar-provider>
-	</n-config-provider>
+    <n-config-provider wh-full :theme-overrides="naiveThemeOverrides">
+        <n-loading-bar-provider>
+            <n-dialog-provider>
+                <n-notification-provider>
+                    <n-message-provider>
+                        <slot></slot>
+                        <NaiveProviderContent />
+                    </n-message-provider>
+                </n-notification-provider>
+            </n-dialog-provider>
+        </n-loading-bar-provider>
+    </n-config-provider>
 </template>
 
 <script setup>
@@ -22,31 +22,31 @@ import { setupMessage, setupDialog } from '@/utils'
 import { naiveThemeOverrides } from '~/settings'
 
 function setupCssVar() {
-	const common = naiveThemeOverrides.common
-	for (const key in common) {
-		useCssVar(`--${kebabCase(key)}`, document.documentElement).value =
-			common[key] || ''
-		if (key === 'primaryColor')
-			window.localStorage.setItem('__THEME_COLOR__', common[key] || '')
-	}
+    const common = naiveThemeOverrides.common
+    for (const key in common) {
+        useCssVar(`--${kebabCase(key)}`, document.documentElement).value =
+            common[key] || ''
+        if (key === 'primaryColor')
+            window.localStorage.setItem('__THEME_COLOR__', common[key] || '')
+    }
 }
 
-// 挂载naive组件的方法至window, 以便在全局使用
+// 掛載 naive 元件的方法至 window, 以便在全局使用
 function setupNaiveTools() {
-	window.$loadingBar = useLoadingBar()
-	window.$notification = useNotification()
+    window.$loadingBar = useLoadingBar()
+    window.$notification = useNotification()
 
-	window.$message = setupMessage(useMessage())
-	window.$dialog = setupDialog(useDialog())
+    window.$message = setupMessage(useMessage())
+    window.$dialog = setupDialog(useDialog())
 }
 
 const NaiveProviderContent = defineComponent({
-	setup() {
-		setupCssVar()
-		setupNaiveTools()
-	},
-	render() {
-		return h('div')
-	},
+    setup() {
+        setupCssVar()
+        setupNaiveTools()
+    },
+    render() {
+        return h('div')
+    },
 })
 </script>

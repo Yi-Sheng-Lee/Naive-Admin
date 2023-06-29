@@ -1,13 +1,13 @@
 <template>
-	<div flex items-center>
-		<MenuCollapse />
-		<BreadCrumb ml-15 />
-	</div>
-	<div ml-auto flex items-center>
-		<GithubSite />
-		<FullScreen />
-		<UserAvatar />
-	</div>
+    <div flex items-center>
+        <MenuCollapse />
+        <BreadCrumb ml-15 />
+    </div>
+    <div ml-auto flex items-center>
+        <GithubSite />
+        <FullScreen />
+        <UserAvatar />
+    </div>
 </template>
 
 <script setup>

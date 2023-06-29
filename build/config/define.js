@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 
 /**
- * * 此处定义的是全局常量，启动或打包后将添加到window中
+ * * 定義全域參數，啟動或打包後加入到 window 中
  * https://vitejs.cn/config/#define
  */
 
@@ -9,5 +9,5 @@ import dayjs from 'dayjs'
 const _BUILD_TIME_ = JSON.stringify(dayjs().format('YYYY-MM-DD HH:mm:ss'))
 
 export const viteDefine = {
-	_BUILD_TIME_,
+    _BUILD_TIME_,
 }
