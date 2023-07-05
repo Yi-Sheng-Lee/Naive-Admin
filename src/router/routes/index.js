@@ -69,6 +69,8 @@ export const EMPTY_ROUTE = {
     component: null,
 }
 
+
+// 引入所有 /src/views/**/route.js
 const modules = import.meta.glob('@/views/**/route.js', { eager: true })
 const asyncRoutes = []
 Object.keys(modules).forEach((key) => {

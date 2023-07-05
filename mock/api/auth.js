@@ -1,9 +1,9 @@
 import { resolveToken } from '../utils'
 
-const token = {
-    admin: 'admin',
-    editor: 'editor',
-}
+// const token = {
+//     admin: 'admin',
+//     editor: 'editor',
+// }
 
 export default [
     {

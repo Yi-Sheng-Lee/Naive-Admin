@@ -3,3 +3,4 @@ dist
 *.local
 stats.html
 .DS_store
+.vscode

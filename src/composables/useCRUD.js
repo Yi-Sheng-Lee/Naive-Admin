@@ -35,14 +35,14 @@ export default function ({
         modalForm.value = { ...row }
     }
 
-    /** 查看 */
+    /** 瀏覽 */
     function handleView(row) {
         modalAction.value = 'view'
         modalVisible.value = true
         modalForm.value = { ...row }
     }
 
-    /** 保存 */
+    /** 儲存 */
     function handleSave() {
         if (!['edit', 'add'].includes(modalAction.value)) {
             modalVisible.value = false
@@ -74,7 +74,7 @@ export default function ({
         })
     }
 
-    /** 删除 */
+    /** 刪除 */
     function handleDelete(id, confirmOptions) {
         if (isNullOrWhitespace(id)) return
         $dialog.confirm({

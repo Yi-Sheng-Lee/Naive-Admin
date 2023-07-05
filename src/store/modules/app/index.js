@@ -5,7 +5,7 @@ export const useAppStore = defineStore('app', {
         return {
             reloadFlag: true,
             collapsed: false,
-            /** keepAlive路由的key，重新赋值可重置keepAlive */
+            /** keepAlive 路由的 key，重新給值可重置 keepAlive */
             aliveKeys: {},
         }
     },
