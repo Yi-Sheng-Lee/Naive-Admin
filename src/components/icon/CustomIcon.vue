@@ -18,5 +18,5 @@ const props = defineProps({
 </script>
 
 <template>
-    <TheIcon type="custom" v-bind="props" />
+    <TheIcon v-bind="props" />
 </template>

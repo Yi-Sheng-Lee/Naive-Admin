@@ -13,7 +13,7 @@
 
 <script setup>
 import { usePermissionStore, useAppStore } from '@/store'
-import { renderCustomIcon, renderIcon, isExternal } from '@/utils'
+import { renderCustomIcon, isExternal } from '@/utils'
 
 const router = useRouter()
 const curRoute = useRoute()
@@ -84,7 +84,7 @@ function getMenuItem(route, basePath = '') {
 
 function getIcon(meta) {
     if (meta?.customIcon) return renderCustomIcon(meta.customIcon, { size: 18 })
-    if (meta?.icon) return renderIcon(meta.icon, { size: 18 })
+    if (meta?.icon) return renderCustomIcon(meta.icon, { size: 18 })
     return null
 }
 

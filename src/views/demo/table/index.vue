@@ -86,7 +86,7 @@
 
 <script setup>
 import { NButton, NSwitch } from 'naive-ui'
-import { formatDateTime, renderIcon, isNullOrUndef } from '@/utils'
+import { formatDateTime, isNullOrUndef } from '@/utils'
 import { useCRUD } from '@/composables'
 import api from './api'
 
@@ -157,7 +157,7 @@ const columns = [
                     },
                     {
                         default: () => '查看',
-                        icon: renderIcon('majesticons:eye-line', { size: 14 }),
+                        // icon: renderIcon('majesticons:eye-line', { size: 14 }),
                     }
                 ),
                 h(
@@ -170,9 +170,9 @@ const columns = [
                     },
                     {
                         default: () => '编辑',
-                        icon: renderIcon('material-symbols:edit-outline', {
-                            size: 14,
-                        }),
+                        // icon: renderIcon('material-symbols:edit-outline', {
+                        //     size: 14,
+                        // }),
                     }
                 ),
 
@@ -186,9 +186,9 @@ const columns = [
                     },
                     {
                         default: () => '删除',
-                        icon: renderIcon('material-symbols:delete-outline', {
-                            size: 14,
-                        }),
+                        // icon: renderIcon('material-symbols:delete-outline', {
+                        //     size: 14,
+                        // }),
                     }
                 ),
             ]

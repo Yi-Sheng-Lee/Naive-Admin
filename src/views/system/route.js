@@ -7,7 +7,7 @@ export default {
     redirect: '',
     meta: {
         title: '系統',
-        customIcon: 'logo',
+        icon: 'system',
         role: ['admin'],
         requireAuth: true,
         order: 4,
@@ -16,10 +16,10 @@ export default {
         {
             name: 'UserManage',
             path: 'user',
-            component: () => import('./user/index.vue'),
+            component: () => import('./user/UserManage.vue'),
             meta: {
                 title: '使用者管理',
-                icon: 'ic:baseline-table-view',
+                icon: 'user',
                 role: ['admin'],
                 requireAuth: true,
                 keepAlive: true,
@@ -28,26 +28,14 @@ export default {
         {
             name: 'RoleManage',
             path: 'role',
-            component: () => import('./role/index.vue'),
+            component: () => import('./role/RoleManage.vue'),
             meta: {
                 title: '角色權限管理',
-                icon: 'ic:baseline-table-view',
+                icon: 'role',
                 role: ['admin'],
                 requireAuth: true,
                 keepAlive: true,
             },
-        },
-        // {
-        //     name: 'MDEditor',
-        //     path: 'md-editor',
-        //     component: () => import('./editor/md-editor.vue'),
-        //     meta: {
-        //         title: 'MD编辑器',
-        //         icon: 'ri:markdown-line',
-        //         role: ['admin'],
-        //         requireAuth: true,
-        //         keepAlive: true,
-        //     },
-        // },
+        }
     ],
 }

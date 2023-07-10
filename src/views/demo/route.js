@@ -24,18 +24,6 @@ export default {
                 requireAuth: true,
                 keepAlive: true,
             },
-        },
-        {
-            name: 'MDEditor',
-            path: 'md-editor',
-            component: () => import('./editor/md-editor.vue'),
-            meta: {
-                title: 'MD编辑器',
-                icon: 'ri:markdown-line',
-                role: ['admin'],
-                requireAuth: true,
-                keepAlive: true,
-            },
-        },
+        }
     ],
 }

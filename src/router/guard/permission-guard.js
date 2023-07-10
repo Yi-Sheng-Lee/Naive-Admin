@@ -5,13 +5,17 @@ export function createPermissionGuard(router) {
     router.beforeEach(async (to) => {
         const token = getToken()
 
-        /** 没有token的情况 */
+        /** 没有 token 的情况 */
         if (isNullOrWhitespace(token)) {
-            if (WHITE_LIST.includes(to.path)) return true
+            if (WHITE_LIST.includes(to.path)) {
+                console.log('no log & white')
+                return true
+            }
+            console.log('no log & not white')
             return { path: 'login', query: { ...to.query, redirect: to.path } }
         }
 
-        /** 有token的情况 */
+        /** 有 token 的情况 */
         if (to.path === '/login') return { path: '/' }
 
         refreshAccessToken()

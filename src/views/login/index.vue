@@ -121,7 +121,7 @@ async function handleLogin() {
             Reflect.deleteProperty(query, 'redirect')
             router.push({ path, query })
         } else {
-            router.push('/')
+            router.push('/system/user')
         }
     } catch (error) {
         console.error(error)

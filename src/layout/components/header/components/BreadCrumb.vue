@@ -12,7 +12,7 @@
 </template>
 
 <script setup>
-import { renderCustomIcon, renderIcon } from '@/utils'
+import { renderCustomIcon } from '@/utils'
 
 const router = useRouter()
 const route = useRoute()
@@ -24,7 +24,7 @@ function handleBreadClick(path) {
 
 function getIcon(meta) {
     if (meta?.customIcon) return renderCustomIcon(meta.customIcon, { size: 18 })
-    if (meta?.icon) return renderIcon(meta.icon, { size: 18 })
+    if (meta?.icon) return renderCustomIcon(meta.icon, { size: 18 })
     return null
 }
 </script>

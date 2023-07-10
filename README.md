@@ -29,7 +29,6 @@
 - 🍉 Integrated `Mock`.
 - 🍍 Integrated `pinia`，lightweight, simple and easy to use alternative to vuex.
 - 📦 Integrated `unplugin` auto import.
-- 🤹 Integrated `iconify` icon，support custom svg icons.
 - 🍇 Integrated `unocss`.
 
 ### Preview
@@ -90,26 +89,3 @@ pnpm preview
 # Commit（husky+commitlint）
 pnpm cz
 ```
-
-### TS version: Qs Admin
-
-#### source code
-
-- gitub: [https://github.com/zclzone/qs-admin](https://github.com/zclzone/qs-admin)
-- gitee: [https://gitee.com/zclzone/qs-admin-ts](https://gitee.com/zclzone/qs-admin-ts)
-
-#### preview
-
-- [https://admin.qszone.com](https://admin.qszone.com)
-- [https://zclzone.github.io/qs-admin](https://zclzone.github.io/qs-admin)
-
-### Communication group & About the author
-
-<a href="https://blog.qszone.com/about/">
-  <img src="https://assets.qszone.com/images/about.png" style="max-width: 400px" />
-</a>
-
-
-
-
-

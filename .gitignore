@@ -4,3 +4,6 @@ dist
 stats.html
 .DS_store
 .vscode
+.github
+.gitlab
+.husky

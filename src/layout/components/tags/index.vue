@@ -47,9 +47,9 @@ const contextMenuOption = reactive({
 watch(
     () => route.path,
     () => {
-        const { name, path } = route
+        const { name, path, meta } = route
         const title = route.meta?.title
-        tagsStore.addTag({ name, path, title })
+        tagsStore.addTag({ name, path, title, icon: meta?.icon })
     },
     { immediate: true }
 )

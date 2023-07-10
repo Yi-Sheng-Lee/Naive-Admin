@@ -1,5 +1,5 @@
 <script setup>
-import { renderIcon, renderCustomIcon } from '@/utils'
+import { renderCustomIcon } from '@/utils'
 
 const props = defineProps({
     icon: {
@@ -14,17 +14,15 @@ const props = defineProps({
         type: String,
         default: undefined,
     },
-    /** iconify | custom */
+    /** custom */
     type: {
         type: String,
-        default: 'iconify',
+        default: '',
     },
 })
 
 const iconCom = computed(() =>
-    props.type === 'iconify'
-        ? renderIcon(props.icon, { size: props.size, color: props.color })
-        : renderCustomIcon(props.icon, { size: props.size, color: props.color })
+    renderCustomIcon(props.icon, { size: props.size, color: props.color })
 )
 </script>
 
