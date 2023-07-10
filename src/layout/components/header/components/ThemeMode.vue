@@ -11,14 +11,5 @@ const toggleDark = () => {
 </script>
 
 <template>
-    <!-- <div mr20 cursor-pointer>
-        
-    </div> -->
-    <TheIcon :icon="isDark ? 'moon' : 'sunny'" :size="18" @click="toggleDark"/>
-    <!--  -->
-    <!-- <n-icon  cursor-pointer >
-        <icon-mdi-moon-waning-crescent v-if="isDark" />
-        <icon-mdi-white-balance-sunny v-else />
-        <the-icon :icon="isDark ? 'moon' : 'sunny'" :size="18"/>
-    </n-icon> -->
+    <TheIcon class="mr-20 cursor-pointer" :icon="isDark ? 'moon' : 'sunny'" :size="18" @click="toggleDark"/>
 </template>

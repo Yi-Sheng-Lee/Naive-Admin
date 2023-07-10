@@ -14,10 +14,14 @@
 
 function addThemeColorCssVars() {
   const key = '__THEME_COLOR__'
+  const colorTheme = 'vueuse-color-scheme'
   const defaultColor = '#316c72'
   const themeColor = window.localStorage.getItem(key) || defaultColor
   const cssVars = `--primary-color: ${themeColor}`
+  const isDark = window.localStorage.getItem(colorTheme) || ''
   document.documentElement.style.cssText = cssVars
+  if (isDark === 'auto')
+    document.documentElement.classList.add('dark')
 }
 
 addThemeColorCssVars()

@@ -1,13 +1,5 @@
 <template>
-    <!-- <div mr-20>
-        
-    </div> -->
-    <TheIcon :icon="isFullscreen ? 'expand-exit' : 'expand'" :size="18" style="cursor: pointer" @click="toggle" />
-    <!-- <n-icon mr20 size="18" style="cursor: pointer" @click="toggle">
-        
-        <icon-ant-design:fullscreen-exit-outlined v-if="isFullscreen" />
-        <icon-ant-design:fullscreen-outlined v-else />
-    </n-icon> -->
+    <TheIcon class="mr-20" :icon="isFullscreen ? 'expand-exit' : 'expand'" :size="18" style="cursor: pointer" @click="toggle" />
 </template>
 
 <script setup>
