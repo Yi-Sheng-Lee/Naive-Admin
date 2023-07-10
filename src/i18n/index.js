@@ -12,14 +12,9 @@ export async function setupI18n(app) {
     const modules = import.meta.glob('@/i18n/lang/*.json', { eager: true })
 
     Object.entries(modules).forEach(([path, module]) => {
-        console.log(path, module)
         const key = path.split('/').pop().split('.')[0]
         i18n.messages[key] = module
     })
-
-
-    console.log(modules)
-
     
     app.use(createI18n(i18n))
 }

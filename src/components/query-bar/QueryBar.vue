@@ -9,6 +9,7 @@
         bc-ccc
         rounded-8
         bg="#fafafc"
+        dark:bg-black
     >
         <n-space wrap :size="[35, 15]">
             <slot />

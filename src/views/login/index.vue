@@ -7,6 +7,7 @@
         <div
             style="transform: translateY(25px)"
             class="m-auto p-15 f-c-c min-w-345 max-w-700 rounded-10 card-shadow bg-white bg-opacity-60"
+            dark:bg-dark
         >
             <div w-380 hidden md:block px-20 py-35>
                 <img
@@ -22,7 +23,7 @@
                 </h5>
                 <div mt-30>
                     <n-input
-                        v-model:value="loginInfo.name"
+                        v-model:value="loginInfo.username"
                         autofocus
                         class="text-16 items-center h-50 pl-10"
                         placeholder="admin"
@@ -80,7 +81,7 @@ const router = useRouter()
 const { query } = useRoute()
 
 const loginInfo = ref({
-    name: '',
+    username: '',
     password: '',
 })
 
@@ -89,7 +90,7 @@ initLoginInfo()
 function initLoginInfo() {
     const localLoginInfo = lStorage.get('loginInfo')
     if (localLoginInfo) {
-        loginInfo.value.name = localLoginInfo.name || ''
+        loginInfo.value.username = localLoginInfo.username || ''
         loginInfo.value.password = localLoginInfo.password || ''
     }
 }
@@ -97,20 +98,20 @@ function initLoginInfo() {
 const isRemember = useStorage('isRemember', false)
 const loading = ref(false)
 async function handleLogin() {
-    const { name, password } = loginInfo.value
-    if (!name || !password) {
+    const { username, password } = loginInfo.value
+    if (!username || !password) {
         $message.warning('请输入用户名和密码')
         return
     }
     try {
         loading.value = true
         $message.loading('正在验证...')
-        const res = await api.login({ name, password: password.toString() })
+        const res = await api.login({ username, password: password.toString() })
         $message.success('登录成功')
         console.log(res)
         setToken(res.access_token)
         if (isRemember.value) {
-            lStorage.set('loginInfo', { name, password })
+            lStorage.set('loginInfo', { username, password })
         } else {
             lStorage.remove('loginInfo')
         }

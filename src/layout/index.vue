@@ -19,14 +19,15 @@
                 bc-eee
                 flex
                 items-center
+                dark="bg-dark border-0"
                 :style="`height: ${header.height}px`"
             >
                 <AppHeader />
             </header>
-            <section v-if="tags.visible" border-b bc-eee>
+            <section v-if="tags.visible" border-b bc-eee dark:border-0>
                 <AppTags :style="{ height: `${tags.height}px` }" />
             </section>
-            <section flex-1 overflow-hidden>
+            <section flex-1 overflow-hidden dark:bg-hex-101014>
                 <AppMain />
             </section>
         </article>

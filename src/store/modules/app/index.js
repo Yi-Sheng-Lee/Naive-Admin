@@ -1,4 +1,7 @@
 import { defineStore } from 'pinia'
+import { useDark } from '@vueuse/core'
+
+const isDark = useDark()
 
 export const useAppStore = defineStore('app', {
     state() {
@@ -7,6 +10,7 @@ export const useAppStore = defineStore('app', {
             collapsed: false,
             /** keepAlive 路由的 key，重新給值可重置 keepAlive */
             aliveKeys: {},
+            isDark
         }
     },
     actions: {
@@ -29,6 +33,12 @@ export const useAppStore = defineStore('app', {
         },
         setAliveKeys(key, val) {
             this.aliveKeys[key] = val
+        },
+        setDark(isDark) {
+            this.isDark = isDark
+        },
+        toggleDark() {
+            this.isDark = !this.isDark
         },
     },
 })

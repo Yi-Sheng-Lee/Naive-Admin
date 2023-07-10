@@ -7,10 +7,10 @@ import { resolveToken } from '../utils'
 
 export default [
     {
-        url: '/api/auth/login',
+        url: '/mssp/api/1.0/login',
         method: 'post',
         response: ({ body }) => {
-            if (['admin', 'editor', 'eason'].includes(body?.name)) {
+            if (['admin', 'editor', 'eason'].includes(body?.username)) {
                 return {
                     // code: 0,
                     status: true,
@@ -29,13 +29,13 @@ export default [
         },
     },
     {
-        url: '/api/auth/refreshToken',
+        url: '/mssp/api/1.0/login/refresh',
         method: 'post',
         response: ({ headers }) => {
             return {
                 code: 0,
                 data: {
-                    token: resolveToken(headers?.authorization),
+                    access_token: resolveToken(headers?.authorization),
                 },
             }
         },

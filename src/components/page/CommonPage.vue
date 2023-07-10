@@ -11,7 +11,7 @@
         >
             <slot v-if="$slots.header" name="header" />
             <template v-else>
-                <h2 color="#333" text-22 font-normal>
+                <h2 text-22 font-normal text-hex-333 dark:text-hex-ccc>
                     {{ title || route.meta?.title }}
                 </h2>
                 <slot name="action" />

@@ -64,10 +64,9 @@ const posts = [
 
 export default [
     {
-        url: '/api/posts',
+        url: '/mssp/api/1.0/posts',
         method: 'get',
         response: (data = {}) => {
-            console.log(data)
             const { title, pageNo, pageSize } = data.query
             let pageData = []
             let total = 60
@@ -107,7 +106,7 @@ export default [
         },
     },
     {
-        url: '/api/post',
+        url: '/mssp/api/1.0/post',
         method: 'post',
         response: ({ body }) => {
             return {
@@ -117,7 +116,7 @@ export default [
         },
     },
     {
-        url: '/api/post/:id',
+        url: '/mssp/api/1.0/post/:id',
         method: 'put',
         response: ({ query, body }) => {
             return {
@@ -130,7 +129,7 @@ export default [
         },
     },
     {
-        url: '/api/post/:id',
+        url: '/mssp/api/1.0/post/:id',
         method: 'delete',
         response: ({ query }) => {
             return {

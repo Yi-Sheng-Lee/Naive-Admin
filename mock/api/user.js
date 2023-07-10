@@ -24,7 +24,7 @@ const users = {
 }
 export default [
     {
-        url: '/api/user',
+        url: '/mssp/api/1.0/user',
         method: 'get',
         response: ({ headers }) => {
             const token = resolveToken(headers?.authorization)
