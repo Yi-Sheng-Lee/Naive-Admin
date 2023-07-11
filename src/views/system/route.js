@@ -10,7 +10,7 @@ export default {
         icon: 'system-setting',
         role: ['admin'],
         requireAuth: true,
-        order: 4,
+        order: 5,
     },
     children: [
         {

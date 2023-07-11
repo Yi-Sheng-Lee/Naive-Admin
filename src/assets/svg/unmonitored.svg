@@ -1,0 +1,6 @@
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+  <path d="m28,16l0,6l-24,0l0,-16l7,0l0,-2l-7,0a2,2 0 0 0 -2,2l0,16a2,2 0 0 0 2,2l8,0l0,4l-4,0l0,2l16,0l0,-2l-4,0l0,-4l8,0a2,2 0 0 0 2,-2l0,-6l-2,0zm-10,12l-4,0l0,-4l4,0l0,4z" fill="currentColor" id="svg_1"/>
+  <path d="m18,18l-0.01,0a1,1 0 0 1 -0.951,-0.725l-1.793,-6.275l-4.246,0l0,-2l5,0a1,1 0 0 1 0.962,0.725l1.074,3.76l3.009,-9.78a1.014,1.014 0 0 1 0.955,-0.705a0.98,0.98 0 0 1 0.949,0.684l1.771,5.316l5.28,0l0,2l-6,0a1,1 0 0 1 -0.949,-0.684l-1.013,-3.04l-3.082,10.018a1,1 0 0 1 -0.956,0.706z" fill="currentColor" id="svg_2"/>
+  <path id="svg_6" d="0" transform="translate(-2.45115 0.888099) translate(3.02161 0) scale(1.12016 0.953268) translate(-3.02161 0)" opacity="undefined" stroke="#000" fill="currentColor"/>
+  <line stroke="#000" stroke-width="2" id="svg_7" y2="28.98532" x2="29.45145" y1="1.845" x1="0.99674" fill="none"/>
+</svg>
