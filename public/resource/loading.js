@@ -1,5 +1,5 @@
 /**
- * 初始化加载效果的svg格式logo
+ * 初始化 loading 效果的 svg 格式 logo
  * @param {string} id - 元素id
  */
  function initSvgLogo(id) {

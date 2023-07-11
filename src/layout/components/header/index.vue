@@ -4,6 +4,7 @@
         <BreadCrumb ml-15 hidden sm:block/>
     </div>
     <div ml-auto flex items-center>
+        <UserLanguage />
         <ThemeMode />
         <FullScreen />
         <UserAvatar />
@@ -16,4 +17,5 @@ import MenuCollapse from './components/MenuCollapse.vue'
 import FullScreen from './components/FullScreen.vue'
 import UserAvatar from './components/UserAvatar.vue'
 import ThemeMode from './components/ThemeMode.vue'
+import UserLanguage from './components/UserLanguage.vue'
 </script>

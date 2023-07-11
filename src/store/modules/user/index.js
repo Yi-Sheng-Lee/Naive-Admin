@@ -23,6 +23,9 @@ export const useUserStore = defineStore('user', {
         role() {
             return this.userInfo?.role || []
         },
+        locale() {
+            return this.userInfo?.locale || 'zh_tw'
+        }
     },
     actions: {
         async getUserInfo() {
@@ -47,6 +50,6 @@ export const useUserStore = defineStore('user', {
         },
         setUserInfo(userInfo = {}) {
             this.userInfo = { ...this.userInfo, ...userInfo }
-        },
+        }
     },
 })

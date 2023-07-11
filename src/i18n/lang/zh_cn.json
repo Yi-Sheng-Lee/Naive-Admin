@@ -1,3 +1,14 @@
 {
-    
+    "language": {
+        "zh_tw": "繁體中文",
+        "zh_cn": "简体中文",
+        "en_us": "English"
+    },
+    "action": {
+        "reload": "重新整理",
+        "close": "關閉",
+        "closeOther": "關閉其他",
+        "closeLeft": "關閉左側",
+        "closeRight": "關閉右側"
+    }
 }

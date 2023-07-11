@@ -13,7 +13,8 @@
 <script setup>
 import { useTagsStore, useAppStore } from '@/store'
 import { renderCustomIcon } from '@/utils'
-// import { useLocalStorage } from '@vueuse/core'
+
+const { t } = useI18n()
 
 const props = defineProps({
     show: {
@@ -41,25 +42,25 @@ const appStore = useAppStore()
 
 const options = computed(() => [
     {
-        label: '重新加载',
+        label: t('action.reload'),
         key: 'reload',
         disabled: props.currentPath !== tagsStore.activeTag,
         icon: renderCustomIcon('refresh', { size: '14px' }),
     },
     {
-        label: '关闭',
+        label: t('action.close'),
         key: 'close',
         disabled: tagsStore.tags.length <= 1,
         icon: renderCustomIcon('close', { size: '14px' }),
     },
     {
-        label: '关闭其他',
+        label: t('action.closeOther'),
         key: 'close-other',
         disabled: tagsStore.tags.length <= 1,
         icon: renderCustomIcon('arrow-expand-horizontal', { size: '14px' }),
     },
     {
-        label: '关闭左侧',
+        label: t('action.closeLeft'),
         key: 'close-left',
         disabled:
             tagsStore.tags.length <= 1 ||
@@ -67,7 +68,7 @@ const options = computed(() => [
         icon: renderCustomIcon('arrow-expand-left', { size: '14px' }),
     },
     {
-        label: '关闭右侧',
+        label: t('action.closeRight'),
         key: 'close-right',
         disabled:
             tagsStore.tags.length <= 1 ||
