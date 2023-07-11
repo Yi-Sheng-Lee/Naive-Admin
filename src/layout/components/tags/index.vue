@@ -7,7 +7,7 @@
             class="px-15 mx-5 rounded-4 cursor-pointer hover:color-primary"
             :type="tagsStore.activeTag === tag.path ? 'primary' : 'default'"
             :closable="tagsStore.tags.length > 1"
-            @click="handleTagClick(tag.path)"
+            @click="handleTagClick(tag)"
             @close.stop="tagsStore.removeTag(tag.path)"
             @contextmenu.prevent="handleContextMenu($event, tag)"
         >
@@ -49,7 +49,7 @@ watch(
     () => {
         const { name, path, meta } = route
         const title = route.meta?.title
-        tagsStore.addTag({ name, path, title, icon: meta?.icon })
+        tagsStore.addTag({ name, path, title, icon: meta?.icon, query: meta?.query })
     },
     { immediate: true }
 )
@@ -66,9 +66,12 @@ watch(
     { immediate: true }
 )
 
-const handleTagClick = (path) => {
-    tagsStore.setActiveTag(path)
-    router.push(path)
+function handleTagClick(tag) {
+    tagsStore.setActiveTag(tag.path)
+    router.push({
+        path: tag.path,
+        query: tag?.query || ''
+    })
 }
 
 function showContextMenu() {

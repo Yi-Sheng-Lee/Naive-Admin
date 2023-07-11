@@ -6,8 +6,8 @@ export default {
     component: Layout,
     redirect: '',
     meta: {
-        title: '系統',
-        icon: 'system',
+        title: '系統設定',
+        icon: 'system-setting',
         role: ['admin'],
         requireAuth: true,
         order: 4,
@@ -23,6 +23,11 @@ export default {
                 role: ['admin'],
                 requireAuth: true,
                 keepAlive: true,
+                query: {
+                    page: 1,
+                    per_page: 10
+                },
+                order: 1
             },
         },
         {
@@ -35,6 +40,76 @@ export default {
                 role: ['admin'],
                 requireAuth: true,
                 keepAlive: true,
+                query: {
+                    page: 1,
+                    per_page: 10
+                },
+                order: 2
+            },
+        },
+        {
+            name: 'SystemInfo',
+            path: 'info',
+            component: () => import('./info/SystemInfo.vue'),
+            meta: {
+                title: '系統資訊',
+                icon: 'system-info',
+                role: ['admin'],
+                requireAuth: true,
+                keepAlive: true,
+                order: 3
+            },
+        },
+        {
+            name: 'SystemService',
+            path: 'service',
+            component: () => import('./service/SystemService.vue'),
+            meta: {
+                title: '服務狀態',
+                icon: 'system-service',
+                role: ['admin'],
+                requireAuth: true,
+                keepAlive: true,
+                order: 4
+            },
+        },
+        {
+            name: 'SystemBackup',
+            path: 'backup',
+            component: () => import('./backup/SystemBackup.vue'),
+            meta: {
+                title: '備份管理',
+                icon: 'backup',
+                role: ['admin'],
+                requireAuth: true,
+                keepAlive: true,
+                order: 5
+            },
+        },
+        {
+            name: 'SystemAudit',
+            path: 'audit',
+            component: () => import('./audit/SystemAudit.vue'),
+            meta: {
+                title: '操作記錄管理',
+                icon: 'audit',
+                role: ['admin'],
+                requireAuth: true,
+                keepAlive: true,
+                order: 6
+            },
+        },
+        {
+            name: 'SystemCluster',
+            path: 'cluster',
+            component: () => import('./cluster/SystemCluster.vue'),
+            meta: {
+                title: '叢集狀態',
+                icon: 'cluster',
+                role: ['admin'],
+                requireAuth: true,
+                keepAlive: true,
+                order: 7
             },
         }
     ],

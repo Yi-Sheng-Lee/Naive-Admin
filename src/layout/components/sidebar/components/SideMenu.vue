@@ -46,6 +46,8 @@ function getMenuItem(route, basePath = '') {
         order: route.meta?.order || 0,
     }
 
+    if (route.meta?.query) menuItem.query = route.meta?.query
+
     const visibleChildren = route.children
         ? route.children.filter((item) => item.name && !item.isHidden)
         : []
@@ -53,7 +55,7 @@ function getMenuItem(route, basePath = '') {
     if (!visibleChildren.length) return menuItem
 
     if (visibleChildren.length === 1) {
-        // 单个子路由处理
+        // 單個子路由處理
         const singleRoute = visibleChildren[0]
         menuItem = {
             label: singleRoute.meta?.title || singleRoute.name,
@@ -95,7 +97,10 @@ function handleMenuSelect(key, item) {
         if (item.path === curRoute.path) {
             appStore.reloadPage()
         } else {
-            router.push(item.path)
+            router.push({
+                path: item.path,
+                query: item?.query || ''
+            })
         }
     }
 }
