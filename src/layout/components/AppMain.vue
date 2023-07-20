@@ -8,6 +8,7 @@
             />
         </KeepAlive>
     </router-view>
+    <n-back-top z-3 :right="30" :visibility-height="10"/>
 </template>
 
 <script setup>
