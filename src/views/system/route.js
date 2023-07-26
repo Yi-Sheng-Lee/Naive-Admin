@@ -4,12 +4,12 @@ export default {
     name: 'System',
     path: '/system',
     component: Layout,
-    redirect: '',
+    redirect: '/system/user',
     meta: {
         title: '系統設定',
         icon: 'system-setting',
-        role: ['admin'],
-        requireAuth: true,
+        // role: [],
+        requireAuth: false,
         order: 5,
     },
     children: [
@@ -20,13 +20,41 @@ export default {
             meta: {
                 title: '使用者管理',
                 icon: 'user',
-                role: ['admin'],
+                role: ['USER_MANAGE'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 query: {
                     page: 1,
                     per_page: 10
                 },
+                order: 1
+            },
+        },
+        {
+            name: 'AddUserDetail',
+            path: 'user/add',
+            component: () => import('./user/UserDetail.vue'),
+            isHidden: true,
+            meta: {
+                title: '新增使用者',
+                icon: 'user',
+                role: ['USER_MANAGE'],
+                requireAuth: true,
+                keepAlive: false,
+                order: 1
+            },
+        },
+        {
+            name: 'EditUserDetail',
+            path: 'user/edit/:uid',
+            component: () => import('./user/UserDetail.vue'),
+            isHidden: true,
+            meta: {
+                title: '修改使用者',
+                icon: 'user',
+                role: ['USER_MANAGE'],
+                requireAuth: true,
+                keepAlive: false,
                 order: 1
             },
         },
@@ -37,9 +65,9 @@ export default {
             meta: {
                 title: '角色權限管理',
                 icon: 'role',
-                role: ['admin'],
+                role: ['ROLE_MANAGE'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 query: {
                     page: 1,
                     per_page: 10
@@ -56,7 +84,7 @@ export default {
                 icon: 'system-info',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 3
             },
         },
@@ -69,7 +97,7 @@ export default {
                 icon: 'system-service',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 4
             },
         },
@@ -82,7 +110,7 @@ export default {
                 icon: 'backup',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 5
             },
         },
@@ -95,7 +123,7 @@ export default {
                 icon: 'audit',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 6
             },
         },
@@ -108,7 +136,7 @@ export default {
                 icon: 'cluster',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 7
             },
         }

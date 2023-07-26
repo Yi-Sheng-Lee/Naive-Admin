@@ -78,7 +78,7 @@ export default function ({
     function handleDelete(id, confirmOptions) {
         if (isNullOrWhitespace(id)) return
         $dialog.confirm({
-            content: '确定删除？',
+            content: '確認刪除？',
             async confirm() {
                 try {
                     modalLoading.value = true

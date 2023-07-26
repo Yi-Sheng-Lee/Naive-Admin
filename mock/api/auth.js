@@ -7,7 +7,7 @@ import { resolveToken } from '../utils'
 
 export default [
     {
-        url: '/mssp/api/1.0/login',
+        url: '/api/1.0/login',
         method: 'post',
         response: ({ body }) => {
             if (['admin', 'editor', 'eason'].includes(body?.username)) {
@@ -29,7 +29,7 @@ export default [
         },
     },
     {
-        url: '/mssp/api/1.0/login/refresh',
+        url: '/api/1.0/login/refresh',
         method: 'post',
         response: ({ headers }) => {
             return {

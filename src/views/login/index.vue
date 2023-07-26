@@ -3,6 +3,7 @@
         :show-footer="true"
         bg-cover
         :style="{ backgroundImage: `url(${bgImg})` }"
+        wh-full
     >
         <div
             style="transform: translateY(25px)"
@@ -45,7 +46,7 @@
                 <div mt-20>
                     <n-checkbox
                         :checked="isRemember"
-                        label="记住我"
+                        label="記得我"
                         :on-update:checked="(val) => (isRemember = val)"
                     />
                 </div>
@@ -60,7 +61,7 @@
                         :loading="loading"
                         @click="handleLogin"
                     >
-                        登录
+                        登入
                     </n-button>
                 </div>
             </div>
@@ -72,7 +73,7 @@
 import { lStorage, setToken } from '@/utils'
 import { useStorage } from '@vueuse/core'
 import bgImg from '@/assets/images/login_bg.webp'
-import api from './api'
+import api from '@/api'
 import { addDynamicRoutes } from '@/router'
 
 const title = import.meta.env.VITE_TITLE
@@ -81,8 +82,8 @@ const router = useRouter()
 const { query } = useRoute()
 
 const loginInfo = ref({
-    username: '',
-    password: '',
+    username: 'Admin',
+    password: 'admin123!!',
 })
 
 initLoginInfo()
@@ -100,16 +101,15 @@ const loading = ref(false)
 async function handleLogin() {
     const { username, password } = loginInfo.value
     if (!username || !password) {
-        $message.warning('请输入用户名和密码')
+        $message.warning('請輸入帳號和密碼')
         return
     }
     try {
         loading.value = true
-        $message.loading('正在验证...')
+        $message.loading('驗證中...')
         const res = await api.login({ username, password: password.toString() })
-        $message.success('登录成功')
-        console.log(res)
-        setToken(res.access_token)
+        $message.success('登入成功')
+        setToken(res)
         if (isRemember.value) {
             lStorage.set('loginInfo', { username, password })
         } else {
@@ -124,7 +124,6 @@ async function handleLogin() {
             router.push('/system/user')
         }
     } catch (error) {
-        console.error(error)
         $message.removeMessage()
     }
     loading.value = false

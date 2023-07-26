@@ -3,9 +3,10 @@ import {
     createWebHistory,
     createWebHashHistory,
 } from 'vue-router'
+import jwtDecode from 'jwt-decode'
 import { setupRouterGuard } from './guard'
 import { basicRoutes, EMPTY_ROUTE, NOT_FOUND_ROUTE } from './routes'
-import { getToken, isNullOrWhitespace } from '@/utils'
+import { getToken, removeToken, isNullOrWhitespace } from '@/utils'
 import { useUserStore, usePermissionStore } from '@/store'
 
 const isHash = import.meta.env.VITE_USE_HASH === 'true'
@@ -40,11 +41,20 @@ export async function addDynamicRoutes() {
         return
     }
 
-    // 有token的情况
+    const now = new Date().getTime()
+    const expiredTime = jwtDecode(token.access_token).exp * 1000
+
+    // token 過期
+    if (now > expiredTime) {
+        removeToken()
+        return
+    }
+
+    // 有 token 的情况
     try {
         const userStore = useUserStore()
         const permissionStore = usePermissionStore()
-        !userStore.userId && (await userStore.getUserInfo())
+        !userStore.userUid && (await userStore.getUserInfo())
         const accessRoutes = permissionStore.generateRoutes(userStore.role)
         accessRoutes.forEach((route) => {
             !router.hasRoute(route.name) && router.addRoute(route)

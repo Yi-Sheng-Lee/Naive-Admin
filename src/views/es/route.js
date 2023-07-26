@@ -22,7 +22,7 @@ export default {
                 icon: 'database-search',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 1
             },
         },
@@ -35,7 +35,7 @@ export default {
                 icon: 'manage-search',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 query: {
                     page: 1,
                     per_page: 10

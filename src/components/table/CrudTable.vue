@@ -15,13 +15,39 @@
         :columns="columns"
         :data="tableData"
         :row-key="(row) => row[rowKey]"
+        :row-props="rowProps"
         :pagination="isPagination ? pagination : false"
         @update:checked-row-keys="onChecked"
         @update:page="onPageChange"
+        @update:page-size="onPageSizeChange"
+
+    />
+    <n-dropdown
+        placement="bottom-start"
+        trigger="manual"
+        :x="x"
+        :y="y"
+        :options="options"
+        :show="showDropdown"
+        @clickoutside="onClickOutside"
+        @select="handleSelect"
     />
 </template>
 
 <script setup>
+const options = [
+    {
+        label: 'Edit',
+        key: 'edit',
+        props: {
+            onClick: () => { console.log(rightClickData.value)}
+        }
+    },
+    {
+        label: () => h('span', { style: { color: 'red' } }, 'Delete'),
+        key: 'delete'
+    }
+]
 const props = defineProps({
     /**
      * @remote true: 后端分页  false： 前端分页
@@ -64,44 +90,79 @@ const props = defineProps({
         },
     },
     /**
-     * ! 约定接口入参出参
-     * * 分页模式需约定分页接口入参
-     *    @pageSize 分页参数：一页展示多少条，默认10
-     *    @pageNo   分页参数：页码，默认1
+     * ! 定義接口輸入輸出參數
+     * * 分頁模式需要定義分頁街口的輸入參數
+     *    @pageSize 分頁參數：一頁顯示幾筆，預設 10 筆
+     *    @pageNo   分頁參數：頁數，預設 第 1 頁
      * * 需约定接口出参
-     *    @pageData 分页模式必须,非分页模式如果没有pageData则取上一层data
-     *    @total    分页模式必须，非分页模式如果没有total则取上一层data.length
+     *    @pageData 分頁模式（必填）,非分頁模式，如果沒有 data 則取當前接回來資訊做為 data
+     *    @total    分頁模式（必填），分頁模式如果沒有 total 則取 data.length
      */
     getData: {
         type: Function,
         required: true,
     },
 })
-
+const route = useRoute()
+// const router = useRouter()
 const emit = defineEmits(['update:queryItems', 'onChecked'])
 const loading = ref(false)
 const initQuery = { ...props.queryItems }
 const tableData = ref([])
-const pagination = reactive({ page: 1, pageSize: 10 })
+const x = ref(0)
+const y = ref(0)
+const showDropdown = ref(false)
+const rightClickData = ref(null)
+const pagination = reactive({ page: parseInt(route.query?.page) || 1, pageSize: parseInt(route.query?.per_page) || 10, pageSizes: [10, 20, 50, 100], showSizePicker: true,  })
+
+watch(
+    () => pagination,
+    (val) => {
+        console.log(val)
+        // route.value.query = {...route.query, page: val.page,  per_page: val.pageSize}
+    },
+    { deep: true}
+)
+
+function rowProps (row) {
+    return {
+        onContextmenu: async (e) => {
+            $message.success(JSON.stringify(row, null, 2))
+            rightClickData.value = row
+            e.preventDefault()
+            showDropdown.value = false
+            await nextTick()
+            showDropdown.value = true
+            x.value = e.clientX
+            y.value = e.clientY
+        }
+    }
+}
+
+function handleSelect(key) {
+    showDropdown.value = false
+    console.log(key)
+}
 
 async function handleQuery() {
     try {
         loading.value = true
         let paginationParams = {}
-        // 如果非分页模式或者使用前端分页,则无需传分页参数
+
+        // 如果非分頁模式或使用前端分頁,則不用傳分頁參數
         if (props.isPagination && props.remote) {
             paginationParams = {
                 pageNo: pagination.page,
                 pageSize: pagination.pageSize,
             }
         }
-        const { data } = await props.getData({
+        const res = await props.getData({
             ...props.queryItems,
             ...props.extraParams,
             ...paginationParams,
         })
-        tableData.value = data?.pageData || data
-        pagination.itemCount = data.total ?? data.length
+        tableData.value = res?.data || res
+        pagination.itemCount = res.total ?? res.length
     } catch (error) {
         tableData.value = []
         pagination.itemCount = 0
@@ -125,17 +186,27 @@ async function handleReset() {
 }
 function onPageChange(currentPage) {
     pagination.page = currentPage
-    if (props.remote) {
-        handleQuery()
-    }
+    if (props.remote) handleQuery()
 }
+
+function onPageSizeChange(currentPageSize) {
+    pagination.pageSize = currentPageSize
+    if (props.remote) handleQuery()
+}
+
 function onChecked(rowKeys) {
     if (props.columns.some((item) => item.type === 'selection')) {
         emit('onChecked', rowKeys)
     }
 }
 
+function onClickOutside () {
+    showDropdown.value = false;
+    rightClickData.value = null
+}
+
 defineExpose({
+    tableData,
     handleSearch,
     handleReset,
 })

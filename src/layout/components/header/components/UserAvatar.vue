@@ -1,8 +1,8 @@
 <template>
     <n-dropdown :options="options" @select="handleSelect">
         <div flex items-center cursor-pointer>
-            <img :src="userStore.avatar" mr10 w-35 h-35 rounded-full />
-            <span>{{ userStore.name }}</span>
+            <!-- <img :src="userStore.avatar" mr10 w-35 h-35 rounded-full /> -->
+            <span>{{ userStore.name }} ({{ userStore.roleName}})</span>
         </div>
     </n-dropdown>
 </template>
@@ -12,10 +12,11 @@ import { useUserStore } from '@/store'
 import { renderCustomIcon } from '@/utils'
 
 const userStore = useUserStore()
+const i18n = useI18n()
 
 const options = [
     {
-        label: '退出登录',
+        label: '登出',
         key: 'logout',
         icon: renderCustomIcon('logout', { size: '14px' }),
     },
@@ -26,11 +27,13 @@ function handleSelect(key) {
         $dialog.confirm({
             title: '提示',
             type: 'info',
-            content: '确认退出？',
-            confirm() {
-                userStore.logout()
-                $message.success('已退出登录')
+            content: '確認登出？',
+            positiveText: i18n.t('action.confirm'),
+            confirm: async() => {
+                await userStore.logout()
+                $message.success('登出成功')
             },
+            negativeText: i18n.t('action.cancel')
         })
     }
 }

@@ -93,9 +93,9 @@ import api from './api'
 defineOptions({ name: 'CrudTable' })
 
 const $table = ref(null)
-/** QueryBar筛选参数（可选） */
+/** QueryBar 過濾參數 (非必填) */
 const queryItems = ref({})
-/** 补充参数（可选） */
+/** axios 補充參數 (非必填) */
 const extraParams = ref({})
 
 onMounted(() => {
@@ -196,7 +196,7 @@ const columns = [
     },
 ]
 
-// 选中事件
+// 選取事件
 function onChecked(rowKeys) {
     if (rowKeys.length) $message.info(`选中${rowKeys.join(' ')}`)
 }

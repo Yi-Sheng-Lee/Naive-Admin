@@ -22,7 +22,7 @@ export default {
                 icon: 'virus-search',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 1
             },
         },

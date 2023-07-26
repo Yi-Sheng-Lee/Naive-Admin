@@ -22,7 +22,7 @@ export default {
                 icon: 'asset',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 query: {
                     page: 1,
                     per_page: 10
@@ -39,7 +39,7 @@ export default {
                 icon: 'asset-group',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 query: {
                     page: 1,
                     per_page: 10
@@ -56,7 +56,7 @@ export default {
                 icon: 'shield-key',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 query: {
                     page: 1,
                     per_page: 10
@@ -73,7 +73,7 @@ export default {
                 icon: 'puzzle',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 query: {
                     page: 1,
                     per_page: 10
@@ -90,7 +90,7 @@ export default {
                 icon: 'monitor',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 query: {
                     page: 1,
                     per_page: 10
@@ -107,7 +107,7 @@ export default {
                 icon: 'unmonitored',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 query: {
                     page: 1,
                     per_page: 10

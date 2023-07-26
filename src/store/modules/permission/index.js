@@ -49,7 +49,8 @@ export const usePermissionStore = defineStore('permission', {
     },
     actions: {
         generateRoutes(role = []) {
-            const accessRoutes = filterAsyncRoutes(asyncRoutes, role)
+            const roleList = Object.keys(role)
+            const accessRoutes = filterAsyncRoutes(asyncRoutes, roleList)
             this.accessRoutes = accessRoutes
             return accessRoutes
         },

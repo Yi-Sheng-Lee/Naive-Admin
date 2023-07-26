@@ -1,8 +1,8 @@
 import { useUserStore } from '@/store'
 
 export function addBaseParams(params) {
-    if (!params.userId) {
-        params.userId = useUserStore().userId
+    if (!params.userUid) {
+        params.userUid = useUserStore().userUid
     }
 }
 

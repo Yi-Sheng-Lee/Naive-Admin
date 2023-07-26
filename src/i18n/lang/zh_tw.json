@@ -5,11 +5,52 @@
         "en_us": "English"
     },
     "action": {
+        "name": "動作",
+        "add": "新增{name}",
+        "edit": "修改{name}",
+        "delete": "刪除{name} | 批次刪除",
         "reload": "重新整理",
         "close": "關閉",
         "closeOther": "關閉其他",
         "closeLeft": "關閉左側",
-        "closeRight": "關閉右側"
+        "closeRight": "關閉右側",
+        "confirm": "確定",
+        "cancel": "取消"
+    },
+    "userManage": {
+        "name": "使用者名稱",
+        "email": "E-mail",
+        "roleName": "角色權限",
+        "lastLogin": "上次登入時間",
+        "password": "密碼",
+        "newPassword": "新密碼",
+        "checkPassword": "密碼確認"
+    },
+    "utils": {
+        "user": "使用者",
+        "success": "成功"
+    },
+    "placeholder": {
+        "username": "請輸入使用者名稱",
+        "email": "請輸入 E-mail",
+        "password": "請輸入密碼",
+        "newPassword": "請輸入新密碼",
+        "checkPassword": "請再次輸入密碼"
+    },
+    "select": {
+        "none": "無",
+        "user": "請選擇使用者",
+        "role": "請選擇角色權限"
+    },
+    "message": {
+        "confirmDelete": "確認刪除以下資料？"
+    },
+    "validation": {
+        "email": "E-mail 格式錯誤",
+        "required": "必填",
+        "ip": "IP 格式錯誤",
+        "ipSegment": "IP 或 該網段格式錯誤",
+        "checkPassword": "密碼不一致"
     },
     "VITE_UTILS": "tw"
 

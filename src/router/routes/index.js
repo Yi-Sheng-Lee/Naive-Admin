@@ -1,4 +1,4 @@
-const Layout = () => import('@/layout/index.vue')
+// const Layout = () => import('@/layout/index.vue')
 
 export const basicRoutes = [
     {
@@ -14,7 +14,7 @@ export const basicRoutes = [
         component: () => import('@/views/login/index.vue'),
         isHidden: true,
         meta: {
-            title: '登录页',
+            title: '登入',
         },
     }
 ]

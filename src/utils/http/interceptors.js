@@ -1,4 +1,4 @@
-import { getToken } from '@/utils'
+import { request, getToken, refreshAccessToken, removeToken, toLogin } from '@/utils'
 // import { resolveResError } from './helpers'
 
 export function reqResolve(config) {
@@ -21,9 +21,10 @@ export function reqResolve(config) {
      * * 加上 token
      * ! 認證方式: JWT Bearer
      */
-    config.headers.Authorization =
-        config.headers.Authorization || 'Bearer ' + token
 
+    
+    config.headers.Authorization =
+        config.headers.Authorization || `Bearer ${config.needRefreshToken ? token.refresh_token : token.access_token}`
     return config
 }
 
@@ -31,7 +32,7 @@ export function reqReject(error) {
     return Promise.reject(error)
 }
 
-export function resResolve(response) {
+export async function resResolve(response) {
     // TODO: 處理不同的 response.headers
     console.log(response)
     const { data, config } = response
@@ -43,10 +44,24 @@ export function resResolve(response) {
         const message = data?.data ?? 'NE5001'
 
         /** 需要錯誤提醒，以 message 形式顯示 */
-        !config.noNeedTip && $message.error(message)
-        return Promise.reject(data)
+        if (data.data !== 'CE40103' && !config.noNeedTip) $message.error(message)
+        console.log(data.data)
+
+        // 置換 token
+        if (data.data === 'CE40103') {
+            const originalConfig = config
+            await refreshAccessToken()
+            const token = getToken()
+            originalConfig.headers.Authorization = `Bearer ${token.access_token}`
+            return await request(originalConfig)
+        } else if (data.data === 'CE40104') {
+            removeToken()
+            toLogin()
+            return
+        }
+        return Promise.reject(data.data)
     }
-    return Promise.resolve(data)
+    return Promise.resolve(data.data)
 }
 
 export function resReject(error) {

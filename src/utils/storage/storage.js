@@ -10,13 +10,13 @@ class Storage {
         return `${this.prefixKey}${key}`.toUpperCase()
     }
 
-    set(key, value, expire) {
+    set(key, value) {
         const stringData = JSON.stringify({
             value,
-            time: Date.now(),
-            expire: !isNullOrUndef(expire)
-                ? new Date().getTime() + expire * 1000
-                : null,
+            // time: Date.now(),
+            // expire: !isNullOrUndef(expire)
+            //     ? new Date().getTime() + expire * 1000
+            //     : null,
         })
         this.storage.setItem(this.getKey(key), stringData)
     }

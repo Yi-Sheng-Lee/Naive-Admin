@@ -13,10 +13,10 @@ export default {
             meta: {
                 title: '儀表板',
                 icon: 'dashboard',
-                role: ['admin'],
+                // role: [],
                 // order: 0,
-                requireAuth: true,
-                keepAlive: true,
+                requireAuth: false,
+                keepAlive: false,
             },
         }
     ],

@@ -8,8 +8,7 @@ export default {
     meta: {
         title: '示例页面',
         customIcon: 'logo',
-        role: ['admin'],
-        requireAuth: true,
+        requireAuth: false,
         order: 3,
     },
     children: [
@@ -20,9 +19,8 @@ export default {
             meta: {
                 title: 'CRUD表格',
                 icon: 'ic:baseline-table-view',
-                role: ['admin'],
-                requireAuth: true,
-                keepAlive: true,
+                requireAuth: false,
+                keepAlive: false,
             },
         }
     ],

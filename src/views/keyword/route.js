@@ -22,7 +22,7 @@ export default {
                 icon: 'rule',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 1
             },
         },
@@ -35,7 +35,7 @@ export default {
                 icon: 'alert-channel',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 2
             },
         },
@@ -48,7 +48,7 @@ export default {
                 icon: 'history',
                 role: ['admin'],
                 requireAuth: true,
-                keepAlive: true,
+                keepAlive: false,
                 order: 3
             },
         },

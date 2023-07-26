@@ -27,7 +27,7 @@
             <section v-if="tags.visible" border-b bc-eee dark:border-0>
                 <AppTags :style="{ height: `${tags.height}px` }" />
             </section>
-            <section flex-1 overflow-scroll dark:bg-hex-101014>
+            <section flex-1 overflow-auto dark:bg-hex-101014>
                 <AppMain />
             </section>
         </article>

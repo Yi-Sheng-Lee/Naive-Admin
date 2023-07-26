@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 import { useDark } from '@vueuse/core'
 
-const isDark = useDark()
+const isDark = useDark({ defaultValue: 'light' })
 
 export const useAppStore = defineStore('app', {
     state() {

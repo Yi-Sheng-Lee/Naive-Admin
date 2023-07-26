@@ -23,16 +23,16 @@ export function setupMessage(NMessage) {
 
         showMessage(type, content, option = {}) {
             if (loadingMessage && loadingMessage.type === 'loading') {
-                // 如果存在则替换正在显示的loading message
+                //如果存在則替換正在顯示的 loading message
                 loadingMessage.type = type
                 loadingMessage.content = content
 
                 if (type !== 'loading') {
-                    // 非loading message需设置自动清除
+                    // 非 loading message 需設置自動清除
                     this.removeMessage(loadingMessage, option.duration)
                 }
             } else {
-                // 不存在正在显示的loading则新建一个message,如果新建的message是loading message则将message赋值存储下来
+                // 不存在正在顯示的 loading 則新建一個 message，如果新建的 message 是 loading，message 則將 message 賦值並存下來
                 let message = NMessage[type](content, option)
                 if (type === 'loading') {
                     loadingMessage = message
@@ -69,7 +69,8 @@ export function setupDialog(NDialog) {
         const showIcon = !isNullOrUndef(option.title)
         return NDialog[option.type || 'warning']({
             showIcon,
-            positiveText: '确定',
+            class: '',
+            positiveText: '確認',
             negativeText: '取消',
             onPositiveClick: option.confirm,
             onNegativeClick: option.cancel,

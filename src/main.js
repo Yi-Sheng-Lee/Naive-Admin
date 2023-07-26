@@ -14,9 +14,9 @@ import { setupNaiveDiscreteApi } from './utils'
 async function setupApp() {
     const app = createApp(App)
 
+    await setupI18n(app)
     setupStore(app)
     setupNaiveDiscreteApi()
-    await setupI18n(app)
     await setupRouter(app)
     
     app.mount('#app')

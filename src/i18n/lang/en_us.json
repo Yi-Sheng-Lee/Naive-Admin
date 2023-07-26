@@ -5,10 +5,51 @@
         "en_us": "English"
     },
     "action": {
+        "name": "Actions",
+        "add": "Add {name}",
+        "edit": "Edit {name}",
+        "delete": "Delete {name} | Batch Delete",
         "reload": "Reload",
         "close": "Close",
         "closeOther": "Close Other",
         "closeLeft": "Close Left",
-        "closeRight": "Close Right"
+        "closeRight": "Close Right",
+        "confirm": "Confirm",
+        "cancel": "Cancel"
+
+    },
+    "message": {
+        "confirmDelete": "Are you sure to delete the following information?"
+    },
+    "userManage": {
+        "name": "Name",
+        "roleName": "Role Name",
+        "email": "E-mail",
+        "lastLogin": "Last Login",
+        "password": "Password",
+        "newPassword": "New Password",
+        "passwordCheck": "Password Check"
+    },
+    "utils": {
+        "user": "User",
+        "success": "Success"
+    },
+    "placeholder": {
+        "username": "Please enter username",
+        "email": "Please enter  E-mail",
+        "password": "Please enter password",
+        "newPassword": "Please enter new password",
+        "passwordCheck": "Please enter password again"
+    },
+    "select": {
+        "none": "None",
+        "user": "Please select user",
+        "role": "Please select role"
+    },
+    "validation": {
+        "email": "E-mail format error",
+        "required": "Required",
+        "ip": "IP format error",
+        "ipSegment": "IP or network segment format error"
     }
 }
