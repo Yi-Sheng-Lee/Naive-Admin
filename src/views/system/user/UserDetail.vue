@@ -8,7 +8,7 @@
                 <n-switch
                     v-model:value="passwordSwitch"
                     size="small"
-                /> 修改密碼
+                /> {{ $t('action.edit', { name: $t('userManage.password') })}}
             </n-space>
         </template>
         <n-form

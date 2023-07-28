@@ -17,10 +17,10 @@
 
         <div flex-shrink-0>
             <n-button secondary type="primary" @click="emit('reset')"
-                >重置</n-button
+                >{{ $t('action.reset') }}</n-button
             >
             <n-button ml-20 type="primary" @click="emit('search')"
-                >搜索</n-button
+                >{{ $t('action.search') }}</n-button
             >
         </div>
     </div>

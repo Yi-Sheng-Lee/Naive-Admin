@@ -1,4 +1,5 @@
 import { request, getToken, refreshAccessToken, removeToken, toLogin } from '@/utils'
+import { i18n } from '@/i18n'
 // import { resolveResError } from './helpers'
 
 export function reqResolve(config) {
@@ -34,18 +35,17 @@ export function reqReject(error) {
 
 export async function resResolve(response) {
     // TODO: 處理不同的 response.headers
-    console.log(response)
     const { data, config } = response
     if (data?.status !== true) {
         // const code = data?.code ?? status
 
         /** 根據 data error code 回傳處理後的 message */
         // const message = resolveResError(code, data?.message ?? statusText)
-        const message = data?.data ?? 'NE5001'
+        const message = i18n.global.t(`error.${data?.data}`) ?? i18n.global.t('error.NE50001')
 
         /** 需要錯誤提醒，以 message 形式顯示 */
         if (data.data !== 'CE40103' && !config.noNeedTip) $message.error(message)
-        console.log(data.data)
+        if (import.meta.env.SHOW_CONSOLE) console.log(data.data)
 
         // 置換 token
         if (data.data === 'CE40103') {
@@ -70,7 +70,7 @@ export function resReject(error) {
         // const code = error?.code
         /** 根據 data error code 回傳處理後的 message */
         // const message = resolveResError(code, error.message)
-        const message = error?.data || 'NE5001'
+        const message = error?.data || i18n.global.t('error.NE50001')
         $message?.error(message)
         return Promise.reject({ message, error })
     }
@@ -78,7 +78,7 @@ export function resReject(error) {
     console.log(error.response)
     // const code = data?.code ?? status
     // const message = resolveResError(code, data?.message ?? error.message)
-    const message = data?.data ?? 'NE5001'
+    const message = data?.data ?? i18n.global.t('error.NE50001')
     /** 需要錯誤提醒，以 message 形式顯示 */
     !config?.noNeedTip && $message.error(message)
     return Promise.reject({

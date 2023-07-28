@@ -5,6 +5,7 @@ export default {
     path: '/demo',
     component: Layout,
     redirect: '/demo/crud-table',
+    isHidden: true,
     meta: {
         title: '示例页面',
         customIcon: 'logo',

@@ -70,6 +70,7 @@ export function setupDialog(NDialog) {
         return NDialog[option.type || 'warning']({
             showIcon,
             class: '',
+            style: 'white-space: pre-line',
             positiveText: '確認',
             negativeText: '取消',
             onPositiveClick: option.confirm,

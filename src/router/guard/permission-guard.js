@@ -6,11 +6,7 @@ export function createPermissionGuard(router) {
         const token = getToken()
         /** 没有 token 的情况 */
         if (isNullOrWhitespace(token) ) {
-            if (WHITE_LIST.includes(to.path)) {
-                console.log('no log & white')
-                return true
-            }
-            console.log('no log & not white')
+            if (WHITE_LIST.includes(to.path)) return true
             return { path: 'login', query: { ...to.query, redirect: to.path } }
         }
 

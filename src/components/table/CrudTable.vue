@@ -50,14 +50,14 @@ const options = [
 ]
 const props = defineProps({
     /**
-     * @remote true: 后端分页  false： 前端分页
+     * @remote true: 後端分頁  false： 前端分页
      */
     remote: {
         type: Boolean,
         default: true,
     },
     /**
-     * @remote 是否分页
+     * @remote 是否分頁
      */
     isPagination: {
         type: Boolean,
@@ -139,9 +139,8 @@ function rowProps (row) {
     }
 }
 
-function handleSelect(key) {
+function handleSelect() {
     showDropdown.value = false
-    console.log(key)
 }
 
 async function handleQuery() {

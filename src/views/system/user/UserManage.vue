@@ -174,7 +174,7 @@ function handleEdit(userUid) {
 // usersUid => Array
 function handleDelete(usersUid, username = '') {
     if (usersUid.length == 0) {
-        $message.error('請勾選使用者')
+        $message.error(i18n.t('error.FA10001'))
         return
     }
 
@@ -188,7 +188,7 @@ function handleDelete(usersUid, username = '') {
     }
 
     const d = $dialog.confirm({
-        title: i18n.t('action.delete', { name: '使用者' }),
+        title: i18n.t('action.delete', { name: i18n.t('utils.user') }),
         type: 'info',
         content,
         positiveText: i18n.t('action.confirm'),
@@ -201,7 +201,7 @@ function handleDelete(usersUid, username = '') {
                 }
                 await api.deleteUser({users: usersUid})
                 $userTable.value?.handleSearch()
-                $message.success('刪除成功')
+                $message.success(i18n.t('action.delete', { name: i18n.t('utils.success')}))
             } catch (error) {
                 d.loading = false
                 d.closable = true
