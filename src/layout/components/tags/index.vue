@@ -14,7 +14,7 @@
             <template v-if="tag.icon" #icon>
                 <TheIcon :icon="tag.icon" class="mr-4" />
             </template>
-            {{ tag.title }}
+            {{ tag.title.length > 1 ? $t(tag.title[0], { name: $t(tag.title[1])}) : $t(tag.title[0]) }}
         </n-tag>
         <ContextMenu
             v-if="contextMenuOption.show"

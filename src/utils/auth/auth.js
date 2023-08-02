@@ -1,4 +1,5 @@
 import { router } from '@/router'
+import { useUserStore } from '@/store'
 
 export function toLogin() {
     const currentRoute = unref(router.currentRoute)
@@ -17,4 +18,8 @@ export function toFourZeroFour() {
     router.replace({
         path: '/404',
     })
+}
+
+export function authCheck (auth, operation) {
+    return useUserStore().isAdmin || (auth in useUserStore().role && useUserStore.auth.includes(operation))
 }

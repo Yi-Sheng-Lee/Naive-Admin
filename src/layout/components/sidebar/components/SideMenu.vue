@@ -19,6 +19,7 @@ const router = useRouter()
 const curRoute = useRoute()
 const permissionStore = usePermissionStore()
 const appStore = useAppStore()
+const i18n = useI18n()
 
 const menuOptions = computed(() => {
     return permissionStore.menus
@@ -39,7 +40,7 @@ function resolvePath(basePath, path) {
 
 function getMenuItem(route, basePath = '') {
     let menuItem = {
-        label: (route.meta && route.meta.title) || route.name,
+        label: (route.meta && i18n.t(route.meta.title[0])) || route.name,
         key: route.name,
         path: resolvePath(basePath, route.path),
         icon: getIcon(route.meta),
@@ -58,7 +59,7 @@ function getMenuItem(route, basePath = '') {
         // 單個子路由處理
         const singleRoute = visibleChildren[0]
         menuItem = {
-            label: singleRoute.meta?.title || singleRoute.name,
+            label: i18n.t(singleRoute.meta?.title[0]) || singleRoute.name,
             key: singleRoute.name,
             path: resolvePath(menuItem.path, singleRoute.path),
             icon: getIcon(singleRoute.meta),

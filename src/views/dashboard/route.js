@@ -11,7 +11,7 @@ export default {
             path: 'dashboard',
             component: () => import('./Dashboard.vue'),
             meta: {
-                title: '儀表板',
+                title: ['components.dashboard'],
                 icon: 'dashboard',
                 // role: [],
                 // order: 0,

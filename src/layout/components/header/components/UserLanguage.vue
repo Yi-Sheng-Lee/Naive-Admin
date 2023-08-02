@@ -14,6 +14,7 @@ import { useUserStore } from '@/store'
 import { renderCustomIcon } from '@/utils'
 
 const i18n = useI18n()
+const route = useRoute()
 const userStore = useUserStore()
 
 const options = computed(() => genLanguageMenu()) || []
@@ -33,6 +34,14 @@ function genLanguageMenu () {
 function handleSelect (key) {
     userStore.setUserInfo({ locale: key })
     i18n.locale.value = key
+    const pageTitle = route.meta?.title
+    const baseTitle = import.meta.env.VITE_TITLE
+    if (pageTitle) {
+        document.title =
+            `${pageTitle.length > 1 ? i18n.t(pageTitle[0], { name: i18n.t(pageTitle[1])}) : i18n.t(pageTitle[0]) } | ${baseTitle}`
+    } else {
+        document.title = baseTitle
+    }
     console.log(i18n.locale.value)
 }
 </script>

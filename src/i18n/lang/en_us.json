@@ -4,6 +4,51 @@
         "zh_cn": "简体中文",
         "en_us": "English"
     },
+    "menu": {
+        "home": "Home",
+        "indexedLog": "Indexed Log",
+        "rawLog": "RAW Log",
+        "report": "Report",
+        "monitoring": "Monitoring",
+        "dataSource": "Data Source",
+        "system": "System"
+    },
+    "components": {
+        "dashboard": "Dashboard",
+        "login": "Login",
+        "indexedLogQuickSearch": "Quick Search",
+        "indexedLogMarco": "Macro",
+        "rawLogFullTextSearch": "Full-text Search",
+        "rawLogFieldSearch": "Field Search",
+        "rawLogMarco": "Macro",
+        "rawLogRealTimeMode": "Real-time Mode",
+        "rawLogStatistic": "Statistic",
+        "reportBuiltIn": "Built-in Report",
+        "reportCustom": "Custom Report",
+        "reportIntegration": "Integration",
+        "reportScheduler": "Scheduler",
+        "monitoringKeyword": "Keyword",
+        "monitoringThreshold": "Threshold",
+        "monitoringReceiving": "Receiving",
+        "monitoringDiskUsage": "Disk Usage",
+        "monitoringHistory": "History",
+        "dataSourceSyslog": "Syslog",
+        "dataSourceHIDS": "HIDS",
+        "dataSourceSNMPTrap": "SNMP Trap",
+        "dataSourceDatabase": "Database",
+        "systemUsers": "Users",
+        "systemRoles": "Roles",
+        "systemResource": "Resource",
+        "systemService": "Service",
+        "systemLicense": "License",
+        "systemNetworking": "Networking",
+        "systemBackupRestore": "Backup / Restore",
+        "systemDataBackup": "Data Backup",
+        "systemLogPlugin": "Log Plugin",
+        "systemAuditTrial": "Audit Trial",
+        "systemNodes": "Nodes",
+        "systemIntelligence": "Intelligence"
+    },
     "action": {
         "name": "Actions",
         "add": "Add {name}",
@@ -20,6 +65,7 @@
         "search": "Search | Search"
 
     },
+    
     "message": {
         "confirmDelete": "Are you sure to delete the following information?"
     },

@@ -17,8 +17,8 @@ export const useUserStore = defineStore('user', {
         name() {
             return this.userInfo?.name
         },
-        avatar() {
-            return this.userInfo?.avatar
+        isAdmin() {
+            return this.userInfo?.is_admin
         },
         role() {
             return this.userInfo?.auth || {}

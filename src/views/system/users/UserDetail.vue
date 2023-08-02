@@ -1,5 +1,5 @@
 <template>
-    <CommonPage show-footer :title="$t(`action.${type}`, { name: $t('utils.user')})">
+    <CommonPage show-footer :title="$t(`action.${type}`, { name: $t('components.systemUsers')})">
         <template #action>
             <n-space
                 v-if="!isUndef(uid)"

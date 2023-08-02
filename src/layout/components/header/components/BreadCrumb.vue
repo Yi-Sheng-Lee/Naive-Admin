@@ -6,7 +6,7 @@
             @click="handleBreadClick(item.path)"
         >
             <component :is="getIcon(item.meta)" />
-            {{ item.meta.title }}
+            {{ item.meta.title.length > 1 ? $t(item.meta.title[0], { name: $t(item.meta.title[1]) }) : $t(item.meta.title[0]) }}
         </n-breadcrumb-item>
     </n-breadcrumb>
 </template>

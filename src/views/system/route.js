@@ -6,7 +6,7 @@ export default {
     component: Layout,
     redirect: '/system/user',
     meta: {
-        title: '系統設定',
+        title: ['menu.system'],
         icon: 'system-setting',
         // role: [],
         requireAuth: false,
@@ -16,11 +16,11 @@ export default {
         {
             name: 'UserManage',
             path: 'user',
-            component: () => import('./user/UserManage.vue'),
+            component: () => import('./users/UsersManage.vue'),
             meta: {
-                title: '使用者管理',
+                title: ['components.systemUsers'],
                 icon: 'user',
-                role: ['USER_MANAGE'],
+                role: ['USER_MANAGE_VIEW'],
                 requireAuth: true,
                 keepAlive: false,
                 query: {
@@ -33,12 +33,12 @@ export default {
         {
             name: 'AddUserDetail',
             path: 'user/add',
-            component: () => import('./user/UserDetail.vue'),
+            component: () => import('./users/UserDetail.vue'),
             isHidden: true,
             meta: {
-                title: '新增使用者',
+                title: ['action.add', 'components.systemUsers'],
                 icon: 'user',
-                role: ['USER_MANAGE'],
+                role: ['USER_MANAGE_CREATE'],
                 requireAuth: true,
                 keepAlive: false,
                 order: 1
@@ -47,12 +47,12 @@ export default {
         {
             name: 'EditUserDetail',
             path: 'user/edit/:uid',
-            component: () => import('./user/UserDetail.vue'),
+            component: () => import('./users/UserDetail.vue'),
             isHidden: true,
             meta: {
-                title: '修改使用者',
+                title: ['action.edit', 'components.systemUsers'],
                 icon: 'user',
-                role: ['USER_MANAGE'],
+                role: ['USER_MANAGE_UPDATE'],
                 requireAuth: true,
                 keepAlive: false,
                 order: 1
@@ -63,9 +63,9 @@ export default {
             path: 'role',
             component: () => import('./role/RoleManage.vue'),
             meta: {
-                title: '角色權限管理',
+                title: ['components.systemRoles'],
                 icon: 'role',
-                role: ['ROLE_MANAGE'],
+                role: ['ROLE_MANAGE_VIEW'],
                 requireAuth: true,
                 keepAlive: false,
                 query: {

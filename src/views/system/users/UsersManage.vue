@@ -1,12 +1,12 @@
 <template>
-    <CommonPage show-footer title="使用者管理">
+    <CommonPage show-footer :title="$t('components.systemUsers')">
         <template #action>
             <n-space>
-                <n-button type="primary" @click.prevent="handleDelete(selectionArray)">
+                <n-button v-if="authCheck('USER_MANAGE', 'DELETE')" type="primary" @click.prevent="handleDelete(selectionArray)">
                     {{ $t('action.delete', 2) }}
                 </n-button>
-                <n-button type="primary" @click="handleAdd">
-                    {{ $t('action.add', { name: $t('utils.user')}) }}
+                <n-button v-if="authCheck('USER_MANAGE', 'CREATE')" type="primary" @click="handleAdd">
+                    {{ $t('action.add', { name: $t('components.systemUsers')}) }}
                 </n-button>
             </n-space>  
         </template>
@@ -54,7 +54,7 @@
 </template>
 <script setup>
 import api from '@/api'
-import { deepClone, formatDateTime, sortByString, renderCustomIcon } from  '@/utils'
+import { deepClone, formatDateTime, sortByString, renderCustomIcon, authCheck } from  '@/utils'
 import { useMenuStore } from '@/store'
 
 const router = useRouter()
@@ -115,29 +115,31 @@ const columns = computed(() => {
             fixed: 'right',
             width: 160,
             render (row) {
-                const actionArr = [
-                    h(renderCustomIcon('edit', { size: '20px' }), {
-                        class: 'cursor-pointer',
-                        onClick: () => {
-                            handleEdit(row.uid)
-                        }
-                    }),
-                    h(renderCustomIcon('email', { size: '20px' }), {
-                        style: 'margin-left: 15px',
-                        class: 'cursor-pointer',
-                        onClick: () => {
-                            handleSendTestMail(row.uid)
-                        }
-                    }),
-                    h(renderCustomIcon('delete', { size: '20px' }), {
-                        class: 'cursor-pointer',
-                        style: 'margin-left: 15px',
-                        onClick: () => {
-                            handleDelete([row.uid], row.name)
-                        }
-                    })   
-                ]
-                if (row.name === 'Admin' || row.is_admin) actionArr.pop()
+                const editAction = h(renderCustomIcon('edit', { size: '20px' }), {
+                    class: 'cursor-pointer',
+                    onClick: () => {
+                        handleEdit(row.uid)
+                    }
+                })
+                const sendAction = h(renderCustomIcon('email', { size: '20px' }), {
+                    style: 'margin-left: 15px',
+                    class: 'cursor-pointer',
+                    onClick: () => {
+                        handleSendTestMail(row.uid)
+                    }
+                })
+                const deleteAction = h(renderCustomIcon('delete', { size: '20px' }), {
+                    class: 'cursor-pointer',
+                    style: 'margin-left: 15px',
+                    onClick: () => {
+                        handleDelete([row.uid], row.name)
+                    }
+                })
+                const actionArr = []
+                if (authCheck('USER_MANAGE', 'UPDATE')) actionArr.push(editAction)
+                actionArr.push(sendAction)
+                if (row.name !== 'Admin' && !row.is_admin && authCheck('USER_MANAGE', 'DELETE')) actionArr.push(deleteAction)
+
                 return actionArr
             }
         }
